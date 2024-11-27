@@ -1,6 +1,7 @@
 package org.example.ll.domain.wiseSaying.service;
 
 import org.example.ll.domain.wiseSaying.entity.WiseSaying;
+import org.example.ll.domain.wiseSaying.repository.WiseSayingMemoryRepository;
 import org.example.ll.domain.wiseSaying.repository.WiseSayingRepository;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Optional;
 public class WiseSayingService {
     private final WiseSayingRepository wiseSayingRepository;
     public WiseSayingService() {
-        this.wiseSayingRepository = new WiseSayingRepository();
+        this.wiseSayingRepository = new WiseSayingMemoryRepository();
     }
 
     public boolean removeByID(int id) {

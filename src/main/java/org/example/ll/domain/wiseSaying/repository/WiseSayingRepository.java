@@ -6,33 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class WiseSayingRepository {
-    private final List<WiseSaying> wiseSayings;
-    private int lastId;
+public interface WiseSayingRepository {
 
-    public WiseSayingRepository() {
-        this.wiseSayings = new ArrayList<>();
-        this.lastId = 0;
-    }
+    boolean removeById(int id);
 
+    List<WiseSaying> findAll();
 
-    public boolean removeById(int id) {
-        return wiseSayings.removeIf(e ->e.getId() == id);
-    }
+    void add(WiseSaying wiseSaying);
 
-    public List<WiseSaying> findAll() {
-        return wiseSayings;
-    }
-
-    public void add(WiseSaying wiseSaying) {
-        ++lastId;
-        wiseSaying.setId(lastId);
-        wiseSayings.add(wiseSaying);
-    }
-
-    public Optional<WiseSaying> findByID(int id) {
-        return wiseSayings.stream()
-                .filter(e -> e.getId() == id)
-                .findFirst();
-    }
+    Optional<WiseSaying> findByID(int id);
 }
